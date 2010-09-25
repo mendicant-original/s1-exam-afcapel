@@ -26,4 +26,12 @@ describe Table, "Row manipulation" do
     @table.rows[2].should == ["War and Peace", "Leo Tolstoy"]
   end
   
+  it "should be possible to delete any row" do
+    @table.rows.delete_at 1
+    @table.rows.size.should == 1
+    
+    @table.rows.delete ["Don Quixote", "Miguel de Cervantes"]
+    @table.rows.size.should == 0
+  end
+  
 end
