@@ -2,12 +2,38 @@ class Column < Array
   attr_accessor :name
 end
 
+module ColumnIndex
+  attr_accessor :column_names
+  attr_accessor :table
+  
+  def [](arg)
+    case arg
+    when String
+      index = column_names.index(arg)
+      return self[index]
+    else
+      super
+    end
+  end
+  
+  def <<(col)
+    col.each_index do |i|
+      @table.rows[i] << col[i]
+    end
+    
+    super
+  end
+end
+
 class Table
   attr_reader :rows
   
   def initialize(array = [], options = {})
     @rows = array
     @columns = []
+    
+    @columns.extend ColumnIndex
+    @columns.table = self
     
     if options[:columns]
       options[:columns].each do |name|

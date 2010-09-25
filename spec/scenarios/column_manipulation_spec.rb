@@ -20,4 +20,9 @@ describe Table, "column manipulation" do
     @table.column('novel').should == ["Don Quixote", "War and Peace"]
   end
   
+  it "should be able to append a column to the right side of the table" do
+    @table.columns.<< [1606, 1869]
+    @table.column(2).should == [1606, 1869]
+  end
+  
 end
