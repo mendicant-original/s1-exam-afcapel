@@ -25,4 +25,12 @@ describe Table, "column manipulation" do
     @table.column(2).should == [1606, 1869]
   end
   
+  it "should be able to insert a column at any position in the table" do
+    @table.columns.insert 1, [1606, 1869]
+    
+    @table.columns[0].should == ["Don Quixote", "War and Peace"]
+    @table.columns[1].should == [1606, 1869]
+    @table.columns[2].should == ["Miguel de Cervantes", "Leo Tolstoy"]
+  end
+  
 end

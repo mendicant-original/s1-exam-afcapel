@@ -20,7 +20,13 @@ module ColumnIndex
     col.each_index do |i|
       @table.rows[i] << col[i]
     end
-    
+    super
+  end
+  
+  def insert(pos, col)
+    col.each_index do |i|
+      @table.rows[i].insert(pos, col[i])
+    end
     super
   end
 end
