@@ -41,4 +41,10 @@ describe Table, "column manipulation" do
     @table.columns.size.should == 0
   end
   
+  it "should be possible to run a transformation on a column" do
+    @table.columns[0].collect! { |content| content.upcase }
+    
+    @table.columns[0].should == ["DON QUIXOTE", "WAR AND PEACE"]
+  end
+  
 end

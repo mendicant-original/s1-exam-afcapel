@@ -1,5 +1,18 @@
 class Column < Array
   attr_accessor :name
+  attr_accessor :table
+  
+  def initialize(table, name = nil)
+    @name = name
+    @table = table
+  end
+  
+  def collect!(&block)
+    index = @table.columns.index self
+    @table.rows.each do |row|
+      row[index] = block.call(row[index])
+    end
+  end
 end
 
 module ColumnIndex
@@ -50,13 +63,12 @@ class Table
     
     if options[:columns]
       options[:columns].each do |name|
-        column = Column.new
-        column.name = name
+        column = Column.new(self, name)
         @columns << column
       end
     else
       0.upto(row_length).each do |i|
-        @columns << Column.new
+        @columns << Column.new(self)
       end
     end
   end
