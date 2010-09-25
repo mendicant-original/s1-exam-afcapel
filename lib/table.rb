@@ -1,7 +1,7 @@
 class Table
   attr_reader :rows
   
-  def initialize(array)
+  def initialize(array = [])
     @rows = array
   end
 end
