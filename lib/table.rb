@@ -96,6 +96,10 @@ class Table
     @rows[index]
   end
   
+  def select!(&block)
+    @rows = @rows.select(&block)
+  end
+  
   private
   
   def row_length
