@@ -8,9 +8,16 @@ describe Table, "filtering" do
   end
   
   it "should be possible to reduce a table to contain only the rows that pass a conditional" do
-    @table.select! { |row| row.include? "Don Quixote" }
+    @table.select_rows! { |row| row.include? "Don Quixote" }
     
     @table.rows.size.should == 1
+    @table.rows[0].include? "Don Quixote"
+  end
+  
+  it "should be possible to reduce a table to contain only the columns that pass a conditional" do
+    @table.select_columns! { |row| row.include? "Don Quixote" }
+    
+    @table.columns.size.should == 1
     @table.rows[0].include? "Don Quixote"
   end
   

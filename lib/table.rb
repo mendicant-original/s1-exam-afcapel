@@ -96,8 +96,20 @@ class Table
     @rows[index]
   end
   
-  def select!(&block)
+  def select_rows!(&block)
     @rows = @rows.select(&block)
+  end
+  
+  def select_columns!(&block)
+    rejected_columns = columns.reject(&block)
+    rejected_columns.each do |col|
+      index = @columns.index col
+      @rows.each do |row|
+        row.delete_at(index)
+      end
+      
+      @columns.delete col
+    end
   end
   
   private
