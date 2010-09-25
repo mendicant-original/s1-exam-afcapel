@@ -18,4 +18,12 @@ describe Table, "Row manipulation" do
     @table.rows[2].should == ["Harry Potter and the Philosopher Stone", "J.K. Rowling"]
   end
   
+  it "should be possible to insert a row at any position in the table" do
+    @table.rows.insert 1, ["Harry Potter and the Philosopher Stone", "J.K. Rowling"]
+    
+    @table.rows[0].should == ["Don Quixote", "Miguel de Cervantes"]
+    @table.rows[1].should == ["Harry Potter and the Philosopher Stone", "J.K. Rowling"]
+    @table.rows[2].should == ["War and Peace", "Leo Tolstoy"]
+  end
+  
 end
