@@ -29,6 +29,13 @@ module ColumnIndex
     end
     super
   end
+  
+  def delete_at(index)
+    @table.rows.each do |row|
+      row.delete_at(index)
+    end
+    super
+  end
 end
 
 class Table
