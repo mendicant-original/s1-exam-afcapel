@@ -37,8 +37,8 @@ describe Table, "column manipulation" do
     @table.columns.delete_at 0
     @table.columns.size.should == 1
     
-    #@table.rows.delete ["Miguel de Cervantes", "Leo Tolstoy"]
-    #@table.rows.size.should == 0
+    @table.columns.delete ["Miguel de Cervantes", "Leo Tolstoy"]
+    @table.columns.size.should == 0
   end
   
 end
