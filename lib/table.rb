@@ -28,6 +28,10 @@ class Table
     end
   end
   
+  def [](index)
+    @rows[index]
+  end
+  
   private
   
   def column_at(index)

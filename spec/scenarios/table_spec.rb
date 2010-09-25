@@ -43,4 +43,12 @@ describe Table do
     @table.columns[1].should == ["Miguel de Cervantes", "Leo Tolstoy"]
   end
   
+  it "should be possible to lookup a cell's contents by row and column" do
+    @table[0][0].should == "Don Quixote"
+    @table[0][1].should == "Miguel de Cervantes"
+    
+    @table[1][0].should == "War and Peace"
+    @table[1][1].should == "Leo Tolstoy"
+  end
+  
 end
