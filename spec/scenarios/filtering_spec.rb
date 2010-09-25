@@ -15,10 +15,11 @@ describe Table, "filtering" do
   end
   
   it "should be possible to reduce a table to contain only the columns that pass a conditional" do
-    @table.select_columns! { |row| row.include? "Don Quixote" }
+    @table.select_columns! { |column| column.include? "Don Quixote" }
     
     @table.columns.size.should == 1
-    @table.rows[0].include? "Don Quixote"
+    @table.rows.size.should == 2
+    @table.columns[0].include? "Don Quixote"
   end
   
 end
