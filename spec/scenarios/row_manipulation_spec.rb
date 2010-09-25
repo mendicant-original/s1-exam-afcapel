@@ -34,4 +34,10 @@ describe Table, "Row manipulation" do
     @table.rows.size.should == 0
   end
   
+  it "should be possible to run a transformation on a row" do
+    @table.rows[0].collect! { |content| content.upcase }
+    
+    @table.rows[0].should == ["DON QUIXOTE", "MIGUEL DE CERVANTES"]
+  end
+  
 end
