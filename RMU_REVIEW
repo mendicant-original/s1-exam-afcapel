@@ -1,13 +1,32 @@
 = GOALS
 
-Based on the feedback and lessons learned through the RMU session I've tried not to overengineer the solution and keep it as simple as possible, relaying more in Ruby dynamic programming features than in object oriented patterns. Not because OO patterns are bad, but because I feel weaker at idiomatic Ruby.
+Based on the feedback and lessons learned through the RMU session I've tried not to
+overengineer the solution and keep it as simple as possible, relaying more in Ruby dynamic 
+programming features than in object oriented patterns. Not because OO patterns are bad, but 
+because I feel weaker at idiomatic Ruby.
 
-I have used TDD focusing in only one simple feature at a time, and doing a lot of small fully functional commits along the project. I tried to apply one lesson of the session: even if you work only for a few hours, after this time you should end up with a working solution.
+I have used TDD focusing in only one simple feature at a time, and doing a lot of small fully 
+functional commits along the project. I tried to apply one lesson of the session: even if you 
+work only for a few hours, after this time you should end up with a working solution.
 
-I started small, modelling the table as a two dimensional array, with another array for the column names and operating over this two structures. With this schema row manipulation was easy and I implemented this features fast. The column arrays were calculated on the fly each time it was needed.
+I started small, modelling the table as a two dimensional array, with another array for the 
+column names and operating over this two structures. With this schema row manipulation was 
+easy and I implemented this features fast. The column arrays were calculated on the fly each 
+time it was needed.
 
-Column manipulation has been more complicated. My main goal was to make the table look like a symetric to dimensional array, with the same operations allowed in rows and columns. I ended up needing a special class for the columns, and modifing the behaviour of the column index array. Both the column class and the column index need references to the table object.
+Column manipulation has been more complicated. My main goal was to make the table look like a 
+symetric to dimensional array, with the same operations allowed in rows and columns. I ended 
+up needing a special class for the columns, and modifing the behaviour of the column index 
+array. Both the column class and the column index need references to the table object.
 
-I am not totally satisfied with the final result, specially with the asymetry between columns and rows. Rows are plain old arrays, working without modifications. Instead, for each manipulation feature of the columns I needed to implement some special method.
+I am not totally satisfied with the final result, specially with the asymetry between columns 
+and rows. Rows are plain old arrays, working without modifications. Instead, for each 
+manipulation feature of the columns I needed to implement some special method.
 
 That said, the implementation is fully functional and cover all the requirements.
+
+= STATUS AFTER SIX HOURS
+
+The status of the project after six hours of coding can be view in this tag:
+
+https://github.com/rmu/s1-exam-afcapel/tree/six_hours
