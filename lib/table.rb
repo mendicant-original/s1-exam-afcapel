@@ -16,14 +16,12 @@ class Column < Array
 end
 
 module ColumnIndex
-  attr_accessor :column_names
   attr_accessor :table
   
   def [](arg)
     case arg
     when String
-      index = column_names.index(arg)
-      return self[index]
+      return select { |col| col.name.downcase == arg.downcase}
     else
       super
     end
@@ -41,6 +39,11 @@ module ColumnIndex
       @table.rows[i].insert(pos, col[i])
     end
     super
+  end
+  
+  def delete(col)
+    index = @table.columns.index col
+    delete_at index
   end
   
   def delete_at(index)
@@ -84,9 +87,9 @@ class Table
   def column(col)
     case col
     when String
-      column =  @columns.find { |c| c.name.downcase == col.downcase }
-      index = @columns.index column
-      column_at index
+      @columns.each_index do |i|
+        return column_at i if @columns[i].name.downcase == col.downcase
+      end
     when Integer
       column_at col
     end

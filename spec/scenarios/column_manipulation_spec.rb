@@ -23,6 +23,7 @@ describe Table, "column manipulation" do
   it "should be able to append a column to the right side of the table" do
     @table.columns.<< [1606, 1869]
     @table.column(2).should == [1606, 1869]
+    @table.columns.last.should == [1606, 1869]
   end
   
   it "should be able to insert a column at any position in the table" do
@@ -36,9 +37,11 @@ describe Table, "column manipulation" do
   it "should be possible to delete any column" do
     @table.columns.delete_at 0
     @table.columns.size.should == 1
+    @table.rows.each {|row| row.size.should == 1}
     
     @table.columns.delete ["Miguel de Cervantes", "Leo Tolstoy"]
     @table.columns.size.should == 0
+    @table.rows.each {|row| row.size.should == 0}
   end
   
   it "should be possible to run a transformation on a column" do
