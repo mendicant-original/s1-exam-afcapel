@@ -6,7 +6,8 @@ programming features than in object oriented patterns. Not because OO patterns a
 because I feel weaker at idiomatic Ruby.
 
 I have used TDD, focusing in only one simple feature at a time, and doing a lot of small fully 
-functional commits along the project. I tried to apply one lesson from the session: even if you work only for a few hours, after this time you should end up with a working solution.
+functional commits along the project. I tried to apply one lesson from the session: even if 
+you work only for a few hours, after this time you should end up with a working solution.
 
 I started simple, modelling the table as a two dimensional array, with another array for the 
 column names and operating over this two structures. With this schema, row manipulation was 
